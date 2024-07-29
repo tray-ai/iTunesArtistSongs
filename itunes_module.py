@@ -8,7 +8,6 @@ def artist_songs(artist, limit):
     except (ConnectionError, TimeoutError,
              requests.HTTPError, requests.TooManyRedirects):
         print('A problem has occured.')
-
     else:
         try:
             # Parse the response JSON content.

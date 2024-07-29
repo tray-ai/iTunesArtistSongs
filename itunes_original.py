@@ -49,7 +49,6 @@ def main():
         # Fetch and print the list of songs for the given artist and limit
         artist_songs(artist, limit)
 
-
 if __name__ == '__main__':
     main()
 
