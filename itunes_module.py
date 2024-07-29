@@ -5,15 +5,12 @@ def artist_songs(artist, limit):
     try: 
         itunes = requests.get(f'https://itunes.apple.com/search?term={artist}'
                             f'&limit={limit}&media=music&entity=song')
-    except (ConnectionError, TimeoutError,
-             requests.HTTPError, requests.TooManyRedirects):
+        
+        # Parse the response JSON content.
+        contents = itunes.json()
+    except (requests.exceptions.RequestException, 
+            requests.exceptions.JSONDecodeError):
         print('A problem has occured.')
-    else:
-        try:
-            # Parse the response JSON content.
-            contents = itunes.json()
-        except requests.exceptions.JSONDecodeError:
-            print('Error decoding JSON.')
 
     # Iterate through the results and print each song's track name.
     print(f'\nHere are {limit} songs by {artist.title()}: ')
