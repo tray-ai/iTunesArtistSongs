@@ -7,6 +7,7 @@ def artist_songs(artist, limit):
         
         # Parse the response JSON content.
         contents = itunes.json()
+        
     except (requests.exceptions.RequestException,
              requests.exceptions.JSONDecodeError):
         print('A problem has occured.')
